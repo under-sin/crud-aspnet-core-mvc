@@ -13,14 +13,17 @@
     <div class="col-md-6">
         <label for="name" asp-for="Name" class="form-label"></label>
         <input type="text" asp-for="Name" class="form-control">
+        <span asp-validation-for="Name" class="text-danger"></span>
     </div>
     <div class="col-md-6">
         <label for="tel" asp-for="PhoneNumber" class="form-label">Phone number</label>
         <input type="tel" asp-for="PhoneNumber" class="form-control">
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
     </div>
     <div class="col-12">
         <label for="email" asp-for="Email" class="form-label">Email</label>
         <input type="email" asp-for="Email" class="form-control" placeholder="email@email.com">
+        <span asp-validation-for="Email" class="text-danger"></span>
     </div>
     <div class="col-12 d-flex justify-content-end gap-1">
         <a class="btn btn-secondary" role="button" asp-controller="Contact" asp-action="Index">Back</a>

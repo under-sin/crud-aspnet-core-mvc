@@ -37,22 +37,65 @@ public class ContactController : Controller
 
     public IActionResult Remove(int id)
     {
-        _contactRepository.Remove(id);
-        return RedirectToAction("Index");
+        try
+        {
+            bool removed = _contactRepository.Remove(id);
+
+            if(removed)
+                TempData["SuccessMessage"] = "Contact removed successfully";
+            else
+                TempData["ErrorMessage"] = "Error when trying to remove contact";
+
+            return RedirectToAction("Index");
+        }
+        catch (Exception error)
+        {
+            TempData["ErrorMessage"] = $"Error when trying to remove contact. More details: {error.Message}";
+            return RedirectToAction("Index");
+        }
     }
 
     [HttpPost]
     public IActionResult Insert(ContactModel contact)
     {
-        _contactRepository.Insert(contact);
-        return RedirectToAction("Index");
+        try
+        {
+            // validando o conteúdo do contact
+            if (ModelState.IsValid)
+            {
+                _contactRepository.Insert(contact);
+                TempData["SuccessMessage"] = "Contact successfully registered";
+                return RedirectToAction("Index");
+            }
+
+            return View(contact);
+        }
+        catch (Exception error)
+        {
+            TempData["ErrorMessage"] = $"Error registering contact. More details: {error.Message}";
+            return RedirectToAction("Index");
+        }
     }
 
     [HttpPost]
     public IActionResult Update(ContactModel contact)
     {
-        _contactRepository.Update(contact);
-        return RedirectToAction("Index");
+        try
+        {
+            // validando o conteúdo do contact
+            if (ModelState.IsValid)
+            {
+                _contactRepository.Update(contact);
+                TempData["SuccessMessage"] = "Contact successfully updated";
+                return RedirectToAction("Index");
+            }
+            // Retornando para a View Edit
+            return View("Edit", contact);
+        }
+        catch (Exception error)
+        {
+            TempData["ErrorMessage"] = $"Error updating contact. More details: {error.Message}";
+            return RedirectToAction("Index");
+        }
     }
-
 }
