@@ -1,13 +1,15 @@
 ﻿@model ContactModel
 @{
-    ViewData["Title"] = "Update contact";
+    ViewData["Title"] = "Edit contact";
 }
 
 <div class="text-center">
     <h1 class="display-4">Update contact</h1>
 </div>
 
-<form class="row g-3">
+<form asp-controller="Contact" asp-action="Update" class="row g-3" method="post">
+    <input type="hidden" asp-for="Id" />
+
     <div class="col-md-6">
         <label for="name" asp-for="Name" class="form-label"></label>
         <input type="text" asp-for="Name" class="form-control">
@@ -24,5 +26,4 @@
         <a class="btn btn-secondary" role="button" asp-controller="Contact" asp-action="Index">Back</a>
         <button type="submit" class="btn btn-primary">Update</button>
     </div>
-
 </form>

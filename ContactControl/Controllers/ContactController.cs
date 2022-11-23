@@ -23,7 +23,24 @@ public class ContactController : Controller
         return View();
     }
 
-    // assinando o método como post
+    public IActionResult Edit(int id)
+    {
+        ContactModel contact = _contactRepository.GetById(id);
+        return View(contact);
+    }
+
+    public IActionResult ConfirmRemove(int id)
+    {
+        ContactModel contact = _contactRepository.GetById(id);
+        return View(contact);
+    }
+
+    public IActionResult Remove(int id)
+    {
+        _contactRepository.Remove(id);
+        return RedirectToAction("Index");
+    }
+
     [HttpPost]
     public IActionResult Insert(ContactModel contact)
     {
@@ -31,14 +48,11 @@ public class ContactController : Controller
         return RedirectToAction("Index");
     }
 
-    public IActionResult Update()
+    [HttpPost]
+    public IActionResult Update(ContactModel contact)
     {
-        return View();
-    }
-
-    public IActionResult ConfirmRemove()
-    {
-        return View();
+        _contactRepository.Update(contact);
+        return RedirectToAction("Index");
     }
 
 }
