@@ -25,11 +25,11 @@
 
     <h1 class="display-4">Contact list</h1>
 
-    <div class="d-flex justify-content-end">
+    <div class="mb-3 d-flex justify-content-end">
         <a asp-controller="Contact" asp-action="Insert" class="btn btn-primary" role="button">Add new contact</a>
     </div>
 
-    <table class="table table-striped">
+    <table id="contact-table" class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">#</th>
