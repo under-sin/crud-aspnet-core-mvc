@@ -1,9 +1,14 @@
 ﻿// datatable contact
 $(document).ready(function () {
-    $('#contact-table').DataTable({
+    getDatatable('#contact-table')
+    getDatatable('#user-table')
+});
+
+function getDatatable(id) {
+    $(id).DataTable({
         "ordering": true,
         "paging": true,
-        "searching": true,
+        "searching": false,
         // Mudando o idioma do datatable
         "oLanguage": {
             "sEmptyTable": "Nenhum registro encontrado na tabela",
@@ -29,4 +34,4 @@ $(document).ready(function () {
             }
         }
     });
-});
+}

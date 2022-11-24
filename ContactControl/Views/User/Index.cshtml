@@ -1,0 +1,66 @@
+﻿@model List<UserModel>
+
+@{
+    ViewData["Title"] = "Users list";
+}
+<div class="text-center">
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <br />
+
+    <h1 class="display-4">Contact list</h1>
+
+    <div class="mb-3 d-flex justify-content-end">
+        <a asp-controller="User" asp-action="Insert" class="btn btn-primary" role="button">Add new user</a>
+    </div>
+
+    <table id="user-table" class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Login</th>
+                <th scope="col">Email</th>
+                <th scope="col">Created</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Programação defenciva -->
+            @if (Model != null && Model.Any())
+            {
+                @foreach (UserModel user in Model)
+                {
+                    <tr>
+                        <th scope="row">@user.Id</th>
+                        <td>@user.Name</td>
+                        <td>@user.Login</td>
+                        <td>@user.Email</td>
+                        <td>@user.CreatedAt</td>
+                        <td>
+                            <div class="btn-group btn-group-sm" role="group">
+                                <a role="button" class="btn btn-primary" asp-route-id="@user.Id" asp-controller="User" asp-action="Edit">Edit</a>
+                                <a role="button" class="btn btn-danger" asp-route-id="@user.Id" asp-controller="User" asp-action="ConfirmRemove">Remove</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
