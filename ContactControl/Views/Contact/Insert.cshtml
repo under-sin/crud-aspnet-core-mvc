@@ -3,30 +3,40 @@
     ViewData["Title"] = "Add contact";
 }
 
-<div class="text-center">
+<div class="text-center mb-4">
     <h1 class="display-4">Add contact</h1>
 </div>
 
-<form asp-controller="Contact" asp-action="Insert" method="post" class="row g-3">
-    <div class="col-md-6">
-        <label for="name" asp-for="Name" class="form-label"></label>
-        <input type="text" asp-for="Name" class="form-control">
-        <span asp-validation-for="Name" class="text-danger"></span>
+<form asp-controller="Contact" asp-action="Insert" class="g-3 w-75 m-auto" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="row mb-4">
+        <div class="col">
+            <div class="form-outline">
+                <input type="text" asp-for="Name" class="form-control">
+                <label for="name" asp-for="Name" class="form-label"></label>
+            </div>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="col">
+            <div class="form-outline">
+                <input type="tel" asp-for="PhoneNumber" class="form-control">
+                <label for="tel" asp-for="PhoneNumber" class="form-label">Phone number</label>
+            </div>
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
     </div>
-    <div class="col-md-6">
-        <label for="tel" asp-for="PhoneNumber" class="form-label">Phone number</label>
-        <input type="tel" asp-for="PhoneNumber" class="form-control">
-        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-    </div>
-    <div class="col-12">
-        <label for="email" asp-for="Email" class="form-label">Email</label>
+
+    <div class="form-outline mb-4">
         <input type="email" asp-for="Email" class="form-control" placeholder="email@email.com">
-        <!--Outra forma de mostrar a mensagem de erro-->
-        @Html.ValidationMessageFor(x => x.Email)
+        <label for="email" asp-for="Email" class="form-label">Email</label>
     </div>
-    <div class="col-12 d-flex justify-content-end gap-1">
-        <a class="btn btn-secondary" role="button" asp-controller="Contact" asp-action="Index">Back</a>
-        <button type="submit" class="btn btn-primary">Add</button>
+    <!--Outra forma de mostrar a mensagem de erro-->
+    @Html.ValidationMessageFor(x => x.Email)
+
+    <button type="submit" class="btn btn-primary btn-block mb-4">Add</button>
+
+    <div class="text-center">
+        <a role="button" asp-controller="Contact" asp-action="Index">Back homepage</a>
     </div>
-    
 </form>

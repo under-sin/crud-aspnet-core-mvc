@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace ContactControl.Models;
-public class UserModel
+public class UserNotPasswordModel
 {
     public int Id { get; set; }
 
@@ -16,17 +16,7 @@ public class UserModel
     [Required(ErrorMessage = "Enter user login")]
     public string Login { get; set; }
 
-    [Required(ErrorMessage = "Enter user password")]
-    public string Password { get; set; }
-
     [Required(ErrorMessage = "Enter user perfil")]
     public PerfilEnum? Perfil { get; set; }
-    public DateTime CreatedAt { get; set; }
-    public DateTime? UpdatedAt { get; set; }
 
-    // verificando se a senha passado no login é igual a do usuário instanciado
-    public bool PasswordValidation(string password)
-    {
-        return Password == password;
-    }
 }

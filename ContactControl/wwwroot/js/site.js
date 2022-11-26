@@ -7,8 +7,9 @@ $(document).ready(function () {
 function getDatatable(id) {
     $(id).DataTable({
         "ordering": true,
-        "paging": true,
+        "paging": false,
         "searching": false,
+        "responsive": true,
         // Mudando o idioma do datatable
         "oLanguage": {
             "sEmptyTable": "Nenhum registro encontrado na tabela",

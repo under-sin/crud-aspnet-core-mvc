@@ -3,6 +3,8 @@
 namespace ContactControl.Repository;
 public interface IUserRepository
 {
+    UserModel GetByLogin(string login);
+
     List<UserModel> GetAll();
 
     UserModel GetById(int id);

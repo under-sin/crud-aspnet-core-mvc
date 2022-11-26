@@ -1,0 +1,57 @@
+﻿@model LoginModel
+@{
+    Layout = "_LayoutLogoff";
+    ViewData["Title"] = "Login";
+}
+<div class="position-relative">
+
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="toasts-container position-absolute top-0 end-0">
+            <div class="toast show fade toast-danger" role="alert" aria-live="assertive" aria-atomic="true" data-mdb-color="danger" data-mdb-autohide="false">
+                <div class="toast-header toast-danger">
+                    <i class="fas fa-exclamation-circle fa-lg me-2"></i>
+                    <strong class="me-auto">Notification error</strong>
+                    <button type="button" class="btn-close" data-mdb-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">@TempData["ErrorMessage"]</div>
+            </div>
+        </div>
+    }
+
+    <div class="w-100 p-4 d-flex justify-content-center pb-4">
+        <form asp-controller="Login" asp-action="SignIn" class="form-mw m-auto" method="post">
+            <div class="mb-4">
+                <div class="form-outline">
+                    <input type="text" asp-for="Login" class="form-control">
+                    <label for="name" asp-for="Login" class="form-label"></label>
+                </div>
+                <span asp-validation-for="Login" class="text-danger"></span>
+            </div>
+
+            <div class="mb-4">
+                <div class="form-outline">
+                    <input type="password" asp-for="Password" class="form-control">
+                    <label for="password" asp-for="Password" class="form-label"></label>
+                </div>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col d-flex justify-content-center">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
+                        <label class="form-check-label" for="form1Example3"> Remember me </label>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <a href="#!">Forgot password?</a>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+        </form>
+    </div>
+</div>

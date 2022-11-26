@@ -1,14 +1,15 @@
 ﻿@using ContactControl.Enums;
 @model UserModel
 @{
-    ViewData["Title"] = "Add user";
+    ViewData["Title"] = "Edit user";
 }
 
 <div class="text-center mb-4">
-    <h1 class="display-4">Add contact</h1>
+    <h1 class="display-4">Update user</h1>
 </div>
 
-<form asp-controller="User" asp-action="Insert" method="post" class="g-3 w-75 m-auto">
+<form asp-controller="User" asp-action="Update" class="g-3 w-75 m-auto" method="post">
+    <input type="hidden" asp-for="Id" />
 
     <div class="row mb-4">
         <div class="col">
@@ -30,10 +31,11 @@
     <div class="row mb-4">
         <div class="col">
             <div class="form-outline">
-                <input type="text" asp-for="Password" class="form-control">
-                <label asp-for="Password" class="form-label"></label>
+                <input type="email" asp-for="Email" class="form-control" placeholder="email@email.com">
+                <label for="email" asp-for="Email" class="form-label">Email</label>
             </div>
-            <span asp-validation-for="Password" class="text-danger"></span>
+            <span asp-validation-for="Email" class="text-danger"></span>
+
         </div>
         <div class="col">
             <select asp-for="Perfil" class="form-control">
@@ -45,12 +47,6 @@
             <span asp-validation-for="Perfil" class="text-danger"></span>
         </div>
     </div>
-
-    <div class="form-outline mb-4">
-        <input type="email" asp-for="Email" class="form-control" placeholder="email@email.com">
-        <label for="email" asp-for="Email" class="form-label">Email</label>
-    </div>
-    <span asp-validation-for="Email" class="text-danger"></span>
 
     <button type="submit" class="btn btn-primary btn-block mb-4">Add</button>
 

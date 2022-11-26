@@ -79,12 +79,26 @@ namespace ContactControl.Controllers
         }
 
         [HttpPost]
-        public IActionResult Update(UserModel user)
+        public IActionResult Update(UserNotPasswordModel userNotPassword)
         {
             try
             {
+                // instanciando um usuário nulo para fazer as alterações
+                UserModel user = null;
+
                 if (ModelState.IsValid)
                 {
+                    // passando o valor do UserNotPasswordModel para o UserModel
+                    user = new UserModel()
+                    {
+                        Id = userNotPassword.Id,
+                        Name = userNotPassword.Name,
+                        Email = userNotPassword.Email,
+                        Perfil = userNotPassword.Perfil,
+                        Login = userNotPassword.Login,
+                        UpdatedAt = DateTime.Now,
+                    };
+
                     _userRepository.Update(user);
                     TempData["SuccessMessage"] = "User successfully updated";
                     return RedirectToAction("Index");

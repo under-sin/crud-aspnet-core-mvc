@@ -16,3 +16,11 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.table.dataTable.no-footer {
+    border-bottom: 0;
+}
+
+.form-mw {
+    width: 25rem;
+}
