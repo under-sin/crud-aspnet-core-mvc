@@ -8,7 +8,8 @@
     @if (TempData["SuccessMessage"] != null)
     {
         <div class="toasts-container position-absolute top-0 end-0">
-            <div class="toast show fade toast-success" role="alert" aria-live="assertive" aria-atomic="true" data-mdb-color="success" data-mdb-autohide="false">
+            <div class="toast show fade toast-success" role="alert" aria-live="assertive" aria-atomic="true"
+            data-mdb-color="success" data-mdb-autohide="false">
                 <div class="toast-header toast-success">
                     <i class="fas fa-check fa-lg me-2"></i>
                     <strong class="me-auto">Notification success</strong>
@@ -22,7 +23,8 @@
     @if (TempData["ErrorMessage"] != null)
     {
         <div class="toasts-container position-absolute top-0 end-0">
-            <div class="toast show fade toast-danger" role="alert" aria-live="assertive" aria-atomic="true" data-mdb-color="danger" data-mdb-autohide="false">
+            <div class="toast show fade toast-danger" role="alert" aria-live="assertive" aria-atomic="true"
+            data-mdb-color="danger" data-mdb-autohide="false">
                 <div class="toast-header toast-danger">
                     <i class="fas fa-exclamation-circle fa-lg me-2"></i>
                     <strong class="me-auto">Notification error</strong>
@@ -63,10 +65,12 @@
                         <td>@contact.Email</td>
                         <td>@contact.PhoneNumber</td>
                         <td>
-                            <a role="button" asp-route-id="@contact.Id" asp-controller="Contact" asp-action="Edit" class="btn btn-primary btn-sm px-3" data-ripple-color="dark">
+                            <a role="button" asp-route-id="@contact.Id" asp-controller="Contact" asp-action="Edit"
+                        class="btn btn-primary btn-sm btn-floating" data-ripple-color="dark">
                                 <i class="fas fa-pencil"></i>
                             </a>
-                            <a role="button" asp-route-id="@contact.Id" asp-controller="Contact" asp-action="ConfirmRemove" class="btn btn-danger btn-sm px-3" data-ripple-color="dark">
+                            <a role="button" asp-route-id="@contact.Id" asp-controller="Contact" asp-action="ConfirmRemove"
+                        class="btn btn-danger btn-sm btn-floating" data-ripple-color="dark">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </td>
