@@ -14,7 +14,7 @@ public class UserRepository : IUserRepository
     public UserModel GetByLogin(string login)
     {
         // pegando o login do usuário
-        return _context.Users.FirstOrDefault(x => x.Login.ToLower() == login.ToLower());
+        return _context.Users.FirstOrDefault(x => x.Login.ToUpper() == login.ToUpper());
     }
 
     public List<UserModel> GetAll()
