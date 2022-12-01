@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ContactControl.Controllers;
 
 // página com filtro do admin
-[PageForAdmin]
+[PageForAdmin] 
 public class UserController : Controller
 {
     private readonly IUserRepository _userRepository;
