@@ -1,7 +1,6 @@
 ﻿using ContactControl.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace ContactControl.ViewComponents;
 
@@ -20,5 +19,5 @@ public class Menu : ViewComponent
         // por padrão o viewComponent vai retornar para a view "Default"
         return View(user);
     }
-    
+
 }
