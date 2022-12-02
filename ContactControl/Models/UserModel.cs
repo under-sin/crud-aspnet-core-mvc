@@ -1,4 +1,5 @@
 ﻿using ContactControl.Enums;
+using ContactControl.Helpers;
 using System.ComponentModel.DataAnnotations;
 
 namespace ContactControl.Models;
@@ -27,6 +28,13 @@ public class UserModel
     // verificando se a senha passado no login é igual a do usuário instanciado
     public bool PasswordValidation(string password)
     {
-        return Password == password;
+        // para o login funcionar é preciso transformar a senha em hash tbm
+        return Password == password.GenerateHash();
+    }
+
+    public void SetHashPassword()
+    {
+        // transformando a senha em hash
+        Password = Password.GenerateHash();
     }
 }

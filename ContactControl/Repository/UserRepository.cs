@@ -29,7 +29,8 @@ public class UserRepository : IUserRepository
 
     public UserModel Insert(UserModel user)
     {
-        user.CreatedAt= DateTime.Now;
+        user.CreatedAt = DateTime.Now;
+        user.SetHashPassword(); // transformando a senha em hash
         _context.Users.Add(user);
         _context.SaveChanges();
         return user;
@@ -42,8 +43,8 @@ public class UserRepository : IUserRepository
         if (userDB == null)
             throw new Exception("Houve um erro ao tentar atualizar o usuário");
 
-        userDB.Name= user.Name;
-        userDB.Email= user.Email;
+        userDB.Name = user.Name;
+        userDB.Email = user.Email;
         userDB.Login = user.Login;
         userDB.Perfil = user.Perfil;
         userDB.UpdatedAt = DateTime.Now;
